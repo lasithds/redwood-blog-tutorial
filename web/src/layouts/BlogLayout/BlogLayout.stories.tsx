@@ -1,6 +1,12 @@
 import BlogLayout from './BlogLayout'
 
-export const generated = () => {
+export const loggedIn = () => {
+  mockCurrentUser({ email: 'lasithds@live.com' })
+
+  return <BlogLayout />
+}
+
+export const loggedOut = () => {
   return <BlogLayout />
 }
 

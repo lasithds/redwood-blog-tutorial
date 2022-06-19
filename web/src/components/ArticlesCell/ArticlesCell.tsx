@@ -1,6 +1,6 @@
 import type { ArticlesQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
-import { Link, routes } from '@redwoodjs/router'
+import Article from 'src/components/Article'
 
 export const QUERY = gql`
   query ArticlesQuery {
@@ -24,14 +24,8 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
   return (
     <>
-      {articles.map((article) => (
-        <article key={article.id}>
-          <header>
-            <Link to={routes.article({ id: article.id })}>{article.title}</Link>
-          </header>
-          <p>{article.body}</p>
-          <div>Posted at: {article.createdAt}</div>
-        </article>
+      {articles.map((article, i) => (
+        <Article article={article} key={i}></Article>
       ))}
     </>
   )

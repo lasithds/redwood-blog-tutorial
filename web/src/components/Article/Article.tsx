@@ -1,20 +1,29 @@
 import { Link, routes } from '@redwoodjs/router'
 import { Post } from 'types/graphql'
 
-interface Props {
-  article: Post
+const truncate = (text: string, length: number) => {
+  return text.substring(0, length) + '...'
 }
 
-const Article = ({ article }: Props) => {
+interface Props {
+  article: Post
+  summary?: boolean
+}
+
+const Article = ({ article, summary = false }: Props) => {
   return (
-    <article>
+    <article className="mb-6 last:mb-0">
       <header>
-        <h2>
+        <h2 className="text-xl text-blue-700 font-semibold">
           <Link to={routes.article({ id: article.id })}>{article.title}</Link>
         </h2>
       </header>
-      <div>{article.body}</div>
-      <div>Posted at: {article.createdAt}</div>
+      <div className="mt-2 text-gray-900 font-light">
+        {summary ? truncate(article.body, 100) : article.body}
+      </div>
+      <div className="mt-2 text-gray-600 text-sm italic font-light">
+        Posted at: {article.createdAt}
+      </div>
     </article>
   )
 }
