@@ -2,6 +2,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { Post } from 'types/graphql'
 
 const truncate = (text: string, length: number) => {
+  if (text.length < length) return text
   return text.substring(0, length) + '...'
 }
 
