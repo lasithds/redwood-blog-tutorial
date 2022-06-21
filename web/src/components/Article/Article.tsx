@@ -7,11 +7,13 @@ const truncate = (text: string, length: number) => {
 }
 
 interface Props {
-  article: Post
+  article: Post | null | undefined
   summary?: boolean
 }
 
 const Article = ({ article, summary = false }: Props) => {
+  if (!article) return <></>
+
   return (
     <article className="mb-6 last:mb-0">
       <header>

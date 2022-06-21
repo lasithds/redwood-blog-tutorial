@@ -18,7 +18,9 @@ export const Loading = () => <div>Loading...</div>
 export const Empty = () => <div>Empty</div>
 
 export const Failure = ({ error }: CellFailureProps<ArticleQueryVariables>) => (
-  <div style={{ color: 'red' }}>Error: {error.message}</div>
+  <div className="bg-red-600">
+    Error: {error?.message ?? 'Failed to load atricle!'}
+  </div>
 )
 
 export const Success = ({ article }: CellSuccessProps<ArticleQuery>) => {
