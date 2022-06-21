@@ -10,21 +10,21 @@ import { standard } from './ArticleCell.mock'
 
 describe('ArticleCell', () => {
   it('renders Loading successfully', () => {
-    expect(() => {
-      render(<Loading />)
-    }).not.toThrow()
+    const renderedComponent = render(<Loading />)
+    expect(renderedComponent).toMatchSnapshot()
+    expect(() => renderedComponent).not.toThrow()
   })
 
   it('renders Empty successfully', async () => {
-    expect(() => {
-      render(<Empty />)
-    }).not.toThrow()
+    const renderedComponent = render(<Empty />)
+    expect(renderedComponent).toMatchSnapshot()
+    expect(() => renderedComponent).not.toThrow()
   })
 
   it('renders Failure successfully', async () => {
-    expect(() => {
-      render(<Failure error={new Error('Oh no')} />)
-    }).not.toThrow()
+    const renderedComponent = render(<Failure error={new Error('Oh no')} />)
+    expect(renderedComponent).toMatchSnapshot()
+    expect(() => renderedComponent).not.toThrow()
   })
 
   // When you're ready to test the actual output of your component render
@@ -34,8 +34,8 @@ describe('ArticleCell', () => {
   // 2. Add test: expect(screen.getByText('Hello, world')).toBeInTheDocument()
 
   it('renders Success successfully', async () => {
-    expect(() => {
-      render(<Success article={standard().article} />)
-    }).not.toThrow()
+    const renderedComponent = render(<Success article={standard().article} />)
+    expect(renderedComponent).toMatchSnapshot()
+    expect(() => renderedComponent).not.toThrow()
   })
 })
